@@ -27,7 +27,7 @@ jobs:
     - name: Prepare Laravel Application
       run: |
         cd example-app
-        cp .env.ci .env
+        # cp .env.ci .env
         php artisan key:generate
  
     - name: Run Testsuite
