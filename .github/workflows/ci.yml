@@ -1,0 +1,36 @@
+on: push
+name: CI
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:7.4
+ 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+ 
+    steps:
+    - uses: actions/checkout@v3
+ 
+    - name: Install composer dependencies
+      run: |
+        cd example-app
+        composer install --no-scripts
+ 
+    - name: Prepare Laravel Application
+      run: |
+        cd example-app
+        cp .env.ci .env
+        php artisan key:generate
+ 
+    - name: Run Testsuite
+      run: |
+        cd example-app
+        vendor/bin/phpunit tests/
