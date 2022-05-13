@@ -1,4 +1,4 @@
-name: laravel-openapi-ci
+name: Laravel OpenAPI CI
 
 on:
   push:
