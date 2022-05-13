@@ -1,5 +1,19 @@
-on: push
 name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+    paths:
+      - '!laravel-openapi/**'
+      - '!**.md'
+  pull_request:
+    paths:
+      - '!laravel-openapi/**'
+      - '!**.md'
+  schedule:
+    - cron: "0 5 * * 4"
+
 jobs:
   phpunit:
     runs-on: ubuntu-latest

@@ -6,13 +6,11 @@ on:
       - '*'
     paths:
       - 'laravel-openapi/**'
-    paths-ignore:
-      - '**.md'
+      - '!**.md'
   pull_request:
     paths:
       - 'laravel-openapi/**'
-    paths-ignore:
-      - '**.md'
+      - '!**.md'
   schedule:
     - cron: "0 5 * * 4"
 
