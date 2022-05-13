@@ -3,7 +3,7 @@ name: Laravel OpenAPI CI
 on:
   push:
     branches:
-      - '*'
+      - 'feature/openapi'
     paths:
       - 'laravel-openapi/**'
       - '!**.md'
