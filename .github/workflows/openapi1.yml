@@ -36,16 +36,16 @@ jobs:
  
     - name: Install composer dependencies
       run: |
-        cd laravel-openapi
+        cd laravel-openapi/app/lib
         composer install --no-scripts
  
     - name: Prepare Laravel Application
       run: |
-        cd laravel-openapi
+        cd laravel-openapi/app/lib
         cp .env.ci .env
         php artisan key:generate
  
     - name: Run Testsuite
       run: |
-        cd laravel-openapi
+        cd laravel-openapi/app/lib
         vendor/bin/phpunit tests/
